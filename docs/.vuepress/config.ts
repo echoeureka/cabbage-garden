@@ -1,7 +1,7 @@
 import { defineUserConfig } from 'vuepress-vite'
-import type { DefaultThemeOptions } from 'vuepress-vite'
+import type { DefaultThemeOptions, ViteBundlerOptions } from 'vuepress-vite'
 
-export default defineUserConfig<DefaultThemeOptions>({
+export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
   bundler: '@vuepress/vite',
   bundlerConfig: {},
   plugins: [
@@ -15,7 +15,7 @@ export default defineUserConfig<DefaultThemeOptions>({
   lang: 'zh-CN',
   title: '菜园子',
   description: '园子里有一些菜',
-  head: [['link', { rel: 'icon', href: '../cabbage-dog-removebg.png' }]],
+  head: [['link', { rel: 'icon', href: 'public/images/cabbage-dog-removebg.png' }]],
   markdown: {
     importCode: {
       // handleImportPath: (str) =>
@@ -36,7 +36,7 @@ export default defineUserConfig<DefaultThemeOptions>({
         }
       ]
     },
-    logo: '../cabbage-dog-removebg.png',
+    logo: 'public/images/cabbage-dog-removebg.png',
     darkMode: true,
     repo: 'https://github.com/cabbage9/cabbage-garden',
     repoLabel: 'GitHub'
