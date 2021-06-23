@@ -4,6 +4,14 @@ import type { DefaultThemeOptions } from 'vuepress-vite'
 export default defineUserConfig<DefaultThemeOptions>({
   bundler: '@vuepress/vite',
   bundlerConfig: {},
+  plugins: [
+    [
+      '@vuepress/plugin-google-analytics',
+      {
+        id: 'G-3ZMM7QYSWH'
+      }
+    ]
+  ],
   lang: 'zh-CN',
   title: '菜园子',
   description: '园子里有一些菜',

@@ -11,5 +11,10 @@
   },
   "devDependencies": {
     "vuepress-vite": "^2.0.0-beta.19"
+  },
+  "dependencies": {
+    "@vue/component-compiler-utils": "^3.2.2",
+    "@vuepress/plugin-google-analytics": "^1.8.2",
+    "@vuepress/shared-utils": "^1.8.2"
   }
 }
