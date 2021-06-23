@@ -15,7 +15,7 @@ export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
   lang: 'zh-CN',
   title: '菜园子',
   description: '园子里有一些菜',
-  head: [['link', { rel: 'icon', href: 'public/images/cabbage-dog-removebg.png' }]],
+  head: [['link', { rel: 'icon', href: '/images/cabbage-dog-removebg.png' }]],
   markdown: {
     importCode: {
       // handleImportPath: (str) =>
@@ -36,9 +36,9 @@ export default defineUserConfig<DefaultThemeOptions, ViteBundlerOptions>({
         }
       ]
     },
-    logo: 'public/images/cabbage-dog-removebg.png',
+    logo: '/images/cabbage-dog-removebg.png',
     darkMode: true,
-    repo: 'https://github.com/cabbage9/cabbage-garden',
+    repo: 'cabbage9/cabbage-garden',
     repoLabel: 'GitHub'
   }
 })

@@ -1,7 +1,7 @@
 ---
 home: true
 title: Home
-heroImage: public/images/cabbage-dog-removebg.png
+heroImage: /images/cabbage-dog-removebg.png
 heroAlt: 菜狗
 heroText: 菜园子
 tagline: null
