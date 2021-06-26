@@ -1,4 +1,12 @@
-function defineReactive(target, key, val) {
+import observe from './observe.js'
+/**
+ * 为对象属性设置 get、set 拦截
+ * @param {*} target
+ * @param {*} key
+ * @param {*} val
+ */
+export default function defineReactive(target, key, val) {
+  // 递归调用，处理 val 为对象的情况
   observe(val)
   Object.defineProperty(target, key, {
     get() {
@@ -9,64 +17,8 @@ function defineReactive(target, key, val) {
       console.log(`setter ${key} = ${val} to ${newVal}`)
       if (val === newVal) return
       val = newVal
+      // 为新值设置响应式，主要是针对直接赋值了对象或者数组的情况
       observe(newVal)
     },
   })
 }
-
-function Observer(obj) {
-  if (Array.isArray(obj)) {
-    // __proto__ vs prototype ?
-    obj.__proto__ = arrayProProto
-  } else {
-    this.walk(obj)
-  }
-}
-
-function observe(obj) {
-  if (typeof obj !== 'object') return
-  return new Observer(obj)
-}
-
-Observer.prototype.walk = function(obj) {
-  for (const key in obj) {
-    defineReactive(obj, key, obj[key])
-  }
-}
-
-function set(target, key, val) {
-  defineReactive(target, key, val)
-}
-
-/**
- * 数组响应式
- * 对数组原型部分方法进行增强
- */
-const arrayProto = Array.prototype
-const arrayProProto = Object.create(arrayProto)
-const methodsToPatch = ['push', 'pop', 'unshift', 'shift', 'splice', 'sort', 'reverse']
-methodsToPatch.forEach((method) => {
-  Object.defineProperty(arrayProProto, method, {
-    value: function(...args) {
-      const ret = arrayProto[method].apply(this, args)
-      console.log(`array reactive`)
-      return ret
-    },
-    configurable: true,
-    writable: true,
-    enumerable: false,
-  })
-})
-
-const obj = {
-  a: 'a',
-  b: {
-    bb: 'bb',
-  },
-  c: ['c', 'c', 'c'],
-}
-
-observe(obj)
-
-obj.c.push('c')
-console.log(obj.c)

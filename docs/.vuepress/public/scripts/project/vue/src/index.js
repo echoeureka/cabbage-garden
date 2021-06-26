@@ -1,4 +1,4 @@
-import initData from './initData'
+import initData from './initData.js'
 /**
  * Vue 构造函数
  * @param {*} options
@@ -11,7 +11,7 @@ export default function Vue(options) {
  * 初始化配置对象
  * @param {*} options
  */
-Vue.prototype._init = function(options) {
+Vue.prototype._init = function (options) {
   // 将 options 挂载到 Vue 实例上
   this.$options = options
   // 初始化 options.data
